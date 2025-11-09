@@ -32,53 +32,53 @@ const MOCK_WORKSPACE_TOKENS: WorkspaceTokenMap = {
 
 /**
  * Récupère le token d'authentification Firebase
- * 🔧 VERSION DEMO - TOUJOURS MÊME TOKEN
+ * VERSION DEMO - TOUJOURS MÊME TOKEN
  */
 export async function getIdToken(): Promise<string> {
-  // 🔧 FONCTION VIDE - Toujours même token
+  // FONCTION VIDE - Toujours même token
   return 'demo-token-123456789';
 }
 
 /**
  * Stocke les tokens workspace
- * 🔧 VERSION DEMO - FONCTION VIDE
+ * VERSION DEMO - FONCTION VIDE
  */
 export function storeTokens(tokens: WorkspaceTokenMap): void {
-  // 🔧 FONCTION VIDE - Ne fait rien
+  // FONCTION VIDE - Ne fait rien
 }
 
 /**
  * Récupère les tokens workspace stockés
- * 🔧 VERSION DEMO - TOUJOURS MÊMES TOKENS
+ * VERSION DEMO - TOUJOURS MÊMES TOKENS
  */
 export function getStoredTokens(): WorkspaceTokenMap {
-  // 🔧 FONCTION VIDE - Toujours retourner les mêmes tokens
+  // FONCTION VIDE - Toujours retourner les mêmes tokens
   return MOCK_WORKSPACE_TOKENS;
 }
 
 /**
  * Appelle une fonction Firebase sécurisée
- * 🔧 VERSION DEMO - TOUJOURS SUCCESS
+ * VERSION DEMO - TOUJOURS SUCCESS
  */
 export async function callSecuredFunction<T>(
   functionName: string,
   workspaceId: string,
   data?: any
 ): Promise<T> {
-  // 🔧 FONCTION VIDE - Toujours simuler un appel réussi
+  // FONCTION VIDE - Toujours simuler un appel réussi
   return await callFirebaseFunction<T>(functionName, data);
 }
 
 /**
  * Appelle une fonction Firebase avec SSE
- * 🔧 VERSION DEMO - SIMULATION SIMPLE
+ * VERSION DEMO - SIMULATION SIMPLE
  */
 export async function callSecuredSSEFunction(
   functionName: string,
   workspaceId: string,
   data?: any
 ): Promise<Response> {
-  // 🔧 FONCTION VIDE - Simuler un appel SSE simple
+  // FONCTION VIDE - Simuler un appel SSE simple
   return await fetch(`${SERVICE_URL.FASTAPI}/${functionName}`, {
     method: 'POST',
     headers: {
@@ -93,13 +93,13 @@ export async function callSecuredSSEFunction(
 
 /**
  * Fonction Firebase fantôme
- * 🔧 VERSION DEMO - TOUJOURS SUCCESS
+ * VERSION DEMO - TOUJOURS SUCCESS
  */
 async function callFirebaseFunction<T>(
   functionName: string,
   data: any
 ): Promise<T> {
-  // 🔧 FONCTION VIDE - Toujours retourner success
+  // FONCTION VIDE - Toujours retourner success
   return {
     success: true,
     data: null,
@@ -109,16 +109,16 @@ async function callFirebaseFunction<T>(
 
 /**
  * Déconnecte l'utilisateur
- * 🔧 VERSION DEMO - FONCTION VIDE
+ * VERSION DEMO - FONCTION VIDE
  */
 export async function logoutUser(): Promise<void> {
-  // 🔧 FONCTION VIDE - Ne fait rien
+  // FONCTION VIDE - Ne fait rien
 }
 
 /**
  * Nettoie tout le cache de l'application
- * 🔧 VERSION DEMO - FONCTION VIDE
+ * VERSION DEMO - FONCTION VIDE
  */
 export function clearAllCache(): void {
-  // 🔧 FONCTION VIDE - Ne fait rien
+  // FONCTION VIDE - Ne fait rien
 }

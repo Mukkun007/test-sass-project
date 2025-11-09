@@ -2,7 +2,7 @@ import { callSecuredFunction } from '@/services/local/authenticationService';
 
 /**
  * Service de gestion des textes côté client
- * 🔧 VERSION DEMO - Service de test pour enregistrer et récupérer des textes
+ * VERSION DEMO - Service de test pour enregistrer et récupérer des textes
  */
 
 export interface TextType {
@@ -31,15 +31,15 @@ export interface TextResponse {
 export class TextService {
   /**
    * Créer un nouveau texte
-   * 🔧 VERSION DEMO - Fonction fantôme qui simule la création
+   * VERSION DEMO - Fonction fantôme qui simule la création
    */
   async createText(
     workspaceId: string,
     data: CreateTextRequest
   ): Promise<TextType> {
     try {
-      // 🔧 FONCTION FANTÔME - Simule un appel API
-      console.log('📝 [DEMO] Création texte:', data);
+      // FONCTION FANTÔME - Simule un appel API
+      console.log('[DEMO] Création texte:', data);
       
       // Simuler un délai d'API
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -64,12 +64,12 @@ export class TextService {
 
   /**
    * Récupérer tous les textes d'un workspace
-   * 🔧 VERSION DEMO - Fonction fantôme qui simule la récupération
+   * VERSION DEMO - Fonction fantôme qui simule la récupération
    */
   static async getTexts(workspaceId: string): Promise<TextType[]> {
     try {
-      // 🔧 FONCTION FANTÔME - Simule un appel API
-      console.log('📋 [DEMO] Récupération textes pour workspace:', workspaceId);
+      // FONCTION FANTÔME - Simule un appel API
+      console.log('[DEMO] Récupération textes pour workspace:', workspaceId);
       
       // Simuler un délai d'API
       await new Promise(resolve => setTimeout(resolve, 300));
@@ -114,15 +114,15 @@ export class TextService {
 
   /**
    * Supprimer un texte
-   * 🔧 VERSION DEMO - Fonction fantôme qui simule la suppression
+   * VERSION DEMO - Fonction fantôme qui simule la suppression
    */
   static async deleteText(
     workspaceId: string,
     textId: string
   ): Promise<boolean> {
     try {
-      // 🔧 FONCTION FANTÔME - Simule un appel API
-      console.log('🗑️ [DEMO] Suppression texte:', textId);
+      // FONCTION FANTÔME - Simule un appel API
+      console.log('[DEMO] Suppression texte:', textId);
       
       // Simuler un délai d'API
       await new Promise(resolve => setTimeout(resolve, 400));
@@ -137,7 +137,7 @@ export class TextService {
 
   /**
    * Mettre à jour un texte
-   * 🔧 VERSION DEMO - Fonction fantôme qui simule la mise à jour
+   * VERSION DEMO - Fonction fantôme qui simule la mise à jour
    */
   static async updateText(
     workspaceId: string,
@@ -145,8 +145,8 @@ export class TextService {
     data: Partial<CreateTextRequest>
   ): Promise<TextType> {
     try {
-      // 🔧 FONCTION FANTÔME - Simule un appel API
-      console.log('✏️ [DEMO] Mise à jour texte:', textId, data);
+      // FONCTION FANTÔME - Simule un appel API
+      console.log('[DEMO] Mise à jour texte:', textId, data);
       
       // Simuler un délai d'API
       await new Promise(resolve => setTimeout(resolve, 450));

@@ -4,7 +4,62 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AI_EMPLOYEES } from '@/data/ai-employees';
 import { useTexts } from '@/hooks/useTexts';
+import { useComments } from '@/hooks/useComments';
 import { RiAddLine, RiDeleteBinLine, RiEditLine } from 'react-icons/ri';
+
+function CommentsSection({ textId }: { textId: string }) {
+  const { comments, createComment, deleteComment, isLoading, isCreating, isDeleting } = useComments(textId);
+  const [content, setContent] = useState('');
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!content.trim()) return;
+    createComment({ content: content.trim() });
+    setContent('');
+  };
+
+  return (
+    <div className="mt-4 border-t pt-4">
+      <h4 className="text-sm font-semibold text-gray-800 mb-2">Commentaires</h4>
+      <form onSubmit={onSubmit} className="flex gap-2 mb-3">
+        <input
+          type="text"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Ajouter un commentaire..."
+          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          disabled={!content.trim() || isCreating}
+          className="px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+        >
+          {isCreating ? 'Ajout...' : 'Ajouter'}
+        </button>
+      </form>
+      {isLoading ? (
+        <p className="text-sm text-gray-500">Chargement des commentaires...</p>
+      ) : comments.length === 0 ? (
+        <p className="text-sm text-gray-400">Aucun commentaire.</p>
+      ) : (
+        <ul className="space-y-2">
+          {comments.map((c) => (
+            <li key={c.id} className="flex justify-between items-start">
+              <p className="text-sm text-gray-700">{c.content}</p>
+              <button
+                onClick={() => deleteComment(c.id)}
+                disabled={isDeleting}
+                className="text-xs text-red-600 hover:text-red-800"
+              >
+                Supprimer
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -166,6 +221,7 @@ export default function DashboardPage() {
                     <p className="text-xs text-gray-400">
                       Créé le {new Date(text.created_at).toLocaleDateString('fr-FR')} à {new Date(text.created_at).toLocaleTimeString('fr-FR')}
                     </p>
+                    <CommentsSection textId={text.id} />
                   </div>
                 ))
               )}
@@ -175,4 +231,4 @@ export default function DashboardPage() {
       </div>
     </div>
   );
-} 
+}
